@@ -1,10 +1,10 @@
-package com.ibrahimdenizz.HRApplication;
+package com.ibrahimdenizz.HrmsApplication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HrApplicationTests {
+class HrmsApplicationTests {
 
 	@Test
 	void contextLoads() {
