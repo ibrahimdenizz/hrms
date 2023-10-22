@@ -1,7 +1,10 @@
 CREATE DATABASE IF NOT EXISTS `hrms` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `hrms`;
 
+DROP TABLE IF EXISTS `LEAVE`;
 DROP TABLE IF EXISTS `EMPLOYEE`;
+DROP TABLE IF EXISTS `LEAVE_TYPE`;
+
 CREATE TABLE `EMPLOYEE`
 (
     ID              VARCHAR(36)                        NOT NULL UNIQUE KEY,
@@ -14,7 +17,7 @@ CREATE TABLE `EMPLOYEE`
     DEPARTMENT      VARCHAR(50),
     BIRTHDAY        DATE,
     STARTED_WORK_AT DATE                               NOT NULL,
-    LEAVE_WORT_AT   DATE,
+    LEAVE_WORK_AT   DATE,
     ROLE            ENUM ('HUMAN_RESOURCES', 'WORKER') NOT NULL,
     CREATED_AT      DATETIME                           NOT NULL,
     UPDATED_AT      DATETIME,
@@ -54,7 +57,6 @@ VALUES (UUID(),
         NOW(),
         NULL);
 
-DROP TABLE IF EXISTS `LEAVE_TYPE`;
 CREATE TABLE LEAVE_TYPE
 (
     ID       VARCHAR(36)  NOT NULL UNIQUE KEY,
@@ -76,7 +78,6 @@ VALUES (UUID(),
         20,
         'FEMALE');
 
-DROP TABLE IF EXISTS `LEAVE`;
 CREATE TABLE `LEAVE`
 (
     ID            VARCHAR(36)                              NOT NULL UNIQUE KEY,

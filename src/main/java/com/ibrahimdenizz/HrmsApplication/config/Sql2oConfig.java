@@ -18,10 +18,10 @@ public class Sql2oConfig implements TransactionManagementConfigurer {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/testDB");
-        dataSource.setUsername("user");
-        dataSource.setPassword("pass");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/hrms");
+        dataSource.setUsername("root");
+        dataSource.setPassword("mysql");
         return dataSource;
     }
 
