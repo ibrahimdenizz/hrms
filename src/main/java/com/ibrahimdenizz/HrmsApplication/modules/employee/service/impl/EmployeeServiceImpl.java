@@ -6,6 +6,7 @@ import com.ibrahimdenizz.HrmsApplication.modules.employee.repository.EmployeeRep
 import com.ibrahimdenizz.HrmsApplication.modules.employee.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -32,8 +33,10 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .department(request.department())
                 .birthday(request.birthday())
                 .startedWorkAt(request.startedWorkAt())
-                .leaveWorkAt(null)
                 .role(request.role())
+                .createdAt(LocalDateTime.now())
+                .generateUsername()
+                .generatePassword()
                 .build();
 
         employeeRepository.save(employee.toEntity());

@@ -36,8 +36,7 @@ public class EmployeeEntity extends BaseEntity {
     @Column(columnName = "ROLE")
     private Role role;
 
-    public EmployeeEntity(){
-        super();
+    public EmployeeEntity() {
     }
 
     public String getId() {
@@ -153,72 +152,72 @@ public class EmployeeEntity extends BaseEntity {
         }
 
         public EmployeeEntityBuilder id(String id) {
-            this.employeeEntity.setId(id);
+            this.employeeEntity.id = id;
             return this;
         }
 
         public EmployeeEntityBuilder username(String username) {
-            this.employeeEntity.setUsername(username);
+            this.employeeEntity.username = username;
             return this;
         }
 
         public EmployeeEntityBuilder password(String password) {
-            this.employeeEntity.setPassword(password);
+            this.employeeEntity.password = password;
             return this;
         }
 
         public EmployeeEntityBuilder firstName(String firstName) {
-            this.employeeEntity.setFirstName(firstName);
+            this.employeeEntity.firstName = firstName;
             return this;
         }
 
         public EmployeeEntityBuilder lastName(String lastName) {
-            this.employeeEntity.setLastName(lastName);
+            this.employeeEntity.lastName = lastName;
             return this;
         }
 
         public EmployeeEntityBuilder email(String email) {
-            this.employeeEntity.setEmail(email);
+            this.employeeEntity.email = email;
             return this;
         }
 
         public EmployeeEntityBuilder gender(Gender gender) {
-            this.employeeEntity.setGender(gender);
+            this.employeeEntity.gender = gender;
             return this;
         }
 
         public EmployeeEntityBuilder department(String department) {
-            this.employeeEntity.setDepartment(department);
+            this.employeeEntity.department = department;
             return this;
         }
 
         public EmployeeEntityBuilder birthday(Date birthday) {
-            this.employeeEntity.setBirthday(birthday);
+            this.employeeEntity.birthday = birthday;
             return this;
         }
 
         public EmployeeEntityBuilder startedWorkAt(Date startedWorkAt) {
-            this.employeeEntity.setStartedWorkAt(startedWorkAt);
+            this.employeeEntity.startedWorkAt = startedWorkAt;
             return this;
         }
 
         public EmployeeEntityBuilder leaveWorkAt(Date leaveWorkAt) {
-            this.employeeEntity.setLeaveWorkAt(leaveWorkAt);
+            this.employeeEntity.leaveWorkAt = leaveWorkAt;
             return this;
         }
 
         public EmployeeEntityBuilder role(Role role) {
-            this.employeeEntity.setRole(role);
+            this.employeeEntity.role = role;
             return this;
         }
 
         public EmployeeEntityBuilder createdAt(LocalDateTime createdAt) {
-            this.employeeEntity.setCreatedAt(createdAt);
+            this.employeeEntity.createdAt = createdAt;
             return this;
         }
 
         public EmployeeEntityBuilder updatedAt(LocalDateTime updatedAt) {
-            this.employeeEntity.setUpdatedAt(updatedAt);
+            this.employeeEntity.updatedAt = updatedAt;
             return this;
         }
 

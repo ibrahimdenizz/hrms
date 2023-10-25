@@ -174,93 +174,90 @@ public class Employee extends BaseDomain {
         }
 
         public Employee build() {
-            if (this.employee.getUsername() == null) this.initUsername();
-            if (this.employee.getPassword() == null) this.initPassword();
-            if (this.employee.getCreatedAt() != null) this.employee.setUpdatedAt(LocalDateTime.now());
-            if (this.employee.getCreatedAt() == null) this.employee.setCreatedAt(LocalDateTime.now());
-
             return this.employee;
         }
 
-        public void initUsername() {
-            int uniqueSuffix = 1000 + new Random().nextInt(9000);
-            String username = this.employee.getFirstName().toLowerCase() + "." + this.employee.getLastName().toLowerCase() + "." + uniqueSuffix;
-            this.employee.setUsername(username);
-        }
-
-        public void initPassword() {
-            int passwordNumber = (int) Math.pow(10, 8) + new Random().nextInt((int) (Math.pow(10, 8) * 9));
-            String passwordHex = Integer.toHexString(passwordNumber);
-            this.employee.setPassword(passwordHex);
-        }
-
         public EmployeeBuilder id(String id) {
-            this.employee.setId(id);
+            this.employee.id = id;
             return this;
         }
 
         public EmployeeBuilder username(String username) {
-            this.employee.setUsername(username);
+            this.employee.username = username;
+            return this;
+        }
+
+        public EmployeeBuilder generateUsername() {
+            int uniqueSuffix = 1000 + new Random().nextInt(9000);
+            this.employee.username = this.employee.firstName.toLowerCase() + "."
+                                     + this.employee.lastName.toLowerCase() + "."
+                                     + uniqueSuffix;
             return this;
         }
 
         public EmployeeBuilder password(String password) {
-            this.employee.setPassword(password);
+            this.employee.password = password;
+            return this;
+        }
+
+        public EmployeeBuilder generatePassword() {
+            int passwordNumber = (int) Math.pow(10, 8) + new Random().nextInt((int) (Math.pow(10, 8) * 9));
+            this.employee.password = Integer.toHexString(passwordNumber);
             return this;
         }
 
         public EmployeeBuilder firstName(String firstName) {
-            this.employee.setFirstName(firstName);
+            this.employee.firstName = firstName;
             return this;
         }
 
         public EmployeeBuilder lastName(String lastName) {
-            this.employee.setLastName(lastName);
+            this.employee.lastName = lastName;
             return this;
         }
 
         public EmployeeBuilder email(String email) {
-            this.employee.setEmail(email);
+            this.employee.email = email;
             return this;
         }
 
         public EmployeeBuilder gender(Gender gender) {
-            this.employee.setGender(gender);
+            this.employee.gender = gender;
             return this;
         }
 
         public EmployeeBuilder department(String department) {
-            this.employee.setDepartment(department);
+            this.employee.department = department;
             return this;
         }
 
         public EmployeeBuilder birthday(Date birthday) {
-            this.employee.setBirthday(birthday);
+            this.employee.birthday = birthday;
             return this;
         }
 
         public EmployeeBuilder startedWorkAt(Date startedWorkAt) {
-            this.employee.setStartedWorkAt(startedWorkAt);
+            this.employee.startedWorkAt = startedWorkAt;
             return this;
         }
 
         public EmployeeBuilder leaveWorkAt(Date leaveWorkAt) {
-            this.employee.setLeaveWorkAt(leaveWorkAt);
+            this.employee.leaveWorkAt = leaveWorkAt;
             return this;
         }
 
         public EmployeeBuilder role(Role role) {
-            this.employee.setRole(role);
+            this.employee.role = role;
             return this;
         }
 
         public EmployeeBuilder createdAt(LocalDateTime createdAt) {
-            this.employee.setCreatedAt(createdAt);
+            this.employee.createdAt = createdAt;
             return this;
         }
 
         public EmployeeBuilder updatedAt(LocalDateTime updatedAt) {
-            this.employee.setUpdatedAt(updatedAt);
+            this.employee.updatedAt = updatedAt;
             return this;
         }
 
