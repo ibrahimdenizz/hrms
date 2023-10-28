@@ -57,4 +57,34 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     }
 
+    public EmployeeEntity findById(String id) {
+        final String SELECT_EMPLOYEE_BY_ID = """
+                SELECT
+                    ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL, GENDER, DEPARTMENT, BIRTHDAY, STARTED_WORK_AT, LEAVE_WORK_AT, ROLE, CREATED_AT, UPDATED_AT
+                FROM EMPLOYEE
+                WHERE ID = :id
+                """;
+
+        try (Connection con = sql2o.open(); final Query query = con.createQuery(SELECT_EMPLOYEE_BY_ID)) {
+            return query
+                    .addParameter("id", id)
+                    .setColumnMappings(ColumnMappingUtil.get(EmployeeEntity.class))
+                    .executeAndFetchFirst(EmployeeEntity.class);
+        }
+    }
+
+    public void updatePassword(String id, String newPassword) {
+        final String UPDATE_EMPLOYEE_PASSWORD_QUERY = """
+                UPDATE EMPLOYEE
+                SET PASSWORD = :password
+                WHERE ID = :id
+                """;
+
+        try (Connection con = sql2o.open(); final Query query = con.createQuery(UPDATE_EMPLOYEE_PASSWORD_QUERY)) {
+            query.addParameter("id", id)
+                    .addParameter("password", newPassword)
+                    .executeUpdate();
+        }
+    }
+
 }

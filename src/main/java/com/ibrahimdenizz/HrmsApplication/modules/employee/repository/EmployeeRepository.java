@@ -12,4 +12,8 @@ public interface EmployeeRepository {
 
     EmployeeEntity findByUsername(String username);
 
+    EmployeeEntity findById(String id);
+
+    void updatePassword(String id, String newPassword);
+
 }
