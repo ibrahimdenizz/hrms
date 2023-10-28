@@ -2,12 +2,13 @@ package com.ibrahimdenizz.HrmsApplication.modules.employee.repository.impl;
 
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.entity.EmployeeEntity;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.repository.EmployeeRepository;
+import com.ibrahimdenizz.HrmsApplication.utils.ColumnMappingUtil;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
-import java.util.Random;
+import java.util.List;
 
 @Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
@@ -19,14 +20,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     public void save(EmployeeEntity employeeEntity) {
-        EmployeeEntity employee = this.findByUsername(employeeEntity.getUsername());
-        for (int i = 0; i < 5; i++) {
-            if (employee == null) break;
-            employee = this.findByUsername(employeeEntity.getUsername());
-            employeeEntity.setUsername(employeeEntity.getUsername() + new Random().nextInt(10));
-        }
-        if (employee != null) throw new RuntimeException("Username already exists");
-
         final String INSERT_EMPLOYEE_QUERY = """
                 INSERT INTO EMPLOYEE (
                     ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL, GENDER, DEPARTMENT, BIRTHDAY, STARTED_WORK_AT, LEAVE_WORK_AT, ROLE, CREATED_AT, UPDATED_AT
@@ -40,13 +33,28 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     }
 
-    public EmployeeEntity findByUsername(String username) {
-        final String SELECT_EMPLOYEE_BY_USERNAME_QUERY = """
-                SELECT * FROM EMPLOYEE WHERE USERNAME = :username
-                """;
-        try (Connection con = sql2o.open(); final Query query = con.createQuery(SELECT_EMPLOYEE_BY_USERNAME_QUERY)) {
-            query.addParameter("username", username);
-            return query.setColumnMappings(new EmployeeEntity().getColumnMappings()).executeAndFetchFirst(EmployeeEntity.class);
+    public List<String> findAllGetUsername() {
+        final String SELECT_EMPLOYEE_WITH_USERNAME_QUERY = "SELECT USERNAME FROM EMPLOYEE";
+
+        try (Connection con = sql2o.open(); final Query query = con.createQuery(SELECT_EMPLOYEE_WITH_USERNAME_QUERY)) {
+            return query.executeScalarList(String.class);
         }
     }
+
+    public EmployeeEntity findByUsername(String username) {
+        final String SELECT_EMPLOYEE_BY_USERNAME_QUERY = """
+                SELECT
+                    ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL, GENDER, DEPARTMENT, BIRTHDAY, STARTED_WORK_AT, LEAVE_WORK_AT, ROLE, CREATED_AT, UPDATED_AT
+                FROM EMPLOYEE
+                WHERE USERNAME = :username
+                """;
+
+        try (Connection con = sql2o.open(); final Query query = con.createQuery(SELECT_EMPLOYEE_BY_USERNAME_QUERY)) {
+            return query.addParameter("username", username)
+                    .setColumnMappings(ColumnMappingUtil.get(EmployeeEntity.class))
+                    .executeAndFetchFirst(EmployeeEntity.class);
+        }
+
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.domain;
 
-import com.ibrahimdenizz.HrmsApplication.model.dto.domain.BaseDomain;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.entity.EmployeeEntity;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Gender;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Role;
@@ -9,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Random;
 
-public class Employee extends BaseDomain {
+public class Employee {
 
     private String id;
     private String username;
@@ -23,6 +22,8 @@ public class Employee extends BaseDomain {
     private Date startedWorkAt;
     private Date leaveWorkAt;
     private Role role;
+    protected LocalDateTime createdAt;
+    protected LocalDateTime updatedAt;
 
     public Employee() {
     }
@@ -60,8 +61,8 @@ public class Employee extends BaseDomain {
                 .startedWorkAt(this.getStartedWorkAt())
                 .leaveWorkAt(this.getLeaveWorkAt())
                 .role(this.getRole())
-                .createdAt(super.getCreatedAt())
-                .updatedAt(super.getUpdatedAt())
+                .createdAt(this.getCreatedAt())
+                .updatedAt(this.getUpdatedAt())
         .build();
     }
 
@@ -159,6 +160,22 @@ public class Employee extends BaseDomain {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public static EmployeeBuilder builder() {

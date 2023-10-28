@@ -1,0 +1,4 @@
+sql2o:
+  url: jdbc:mysql://localhost:3306/hrms
+  username: root
+  password: mysql

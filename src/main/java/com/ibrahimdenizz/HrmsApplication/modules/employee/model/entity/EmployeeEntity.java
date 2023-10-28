@@ -2,7 +2,6 @@ package com.ibrahimdenizz.HrmsApplication.modules.employee.model.entity;
 
 import com.ibrahimdenizz.HrmsApplication.annotations.Column;
 import com.ibrahimdenizz.HrmsApplication.annotations.Table;
-import com.ibrahimdenizz.HrmsApplication.model.entity.BaseEntity;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Gender;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Role;
 
@@ -10,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Table(tableName = "EMPLOYEE")
-public class EmployeeEntity extends BaseEntity {
+public class EmployeeEntity {
     @Column(columnName = "ID")
     private String id;
     @Column(columnName = "USERNAME")
@@ -35,6 +34,11 @@ public class EmployeeEntity extends BaseEntity {
     private Date leaveWorkAt;
     @Column(columnName = "ROLE")
     private Role role;
+    @Column(columnName = "CREATED_AT")
+    private LocalDateTime createdAt;
+    @Column(columnName = "UPDATED_AT")
+    private LocalDateTime updatedAt;
+
 
     public EmployeeEntity() {
     }
@@ -133,6 +137,22 @@ public class EmployeeEntity extends BaseEntity {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public static EmployeeEntityBuilder builder() {
