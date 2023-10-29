@@ -81,8 +81,8 @@ VALUES (UUID(),
 CREATE TABLE `LEAVE`
 (
     ID            VARCHAR(36)                              NOT NULL UNIQUE KEY,
-    EMPLOYEE_ID   VARCHAR(36)                              NOT NULL UNIQUE KEY,
-    LEAVE_TYPE_ID VARCHAR(36)                                      NOT NULL UNIQUE KEY,
+    EMPLOYEE_ID   VARCHAR(36) NOT NULL,
+    LEAVE_TYPE_ID VARCHAR(36) NOT NULL,
     START_DATE    DATE                                     NOT NULL,
     END_DATE      DATE                                     NOT NULL,
     REASON        VARCHAR(2048),

@@ -1,14 +1,12 @@
 package com.ibrahimdenizz.HrmsApplication.modules.employee.model.entity;
 
 import com.ibrahimdenizz.HrmsApplication.annotations.Column;
-import com.ibrahimdenizz.HrmsApplication.annotations.Table;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Gender;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Role;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
-@Table(tableName = "EMPLOYEE")
 public class EmployeeEntity {
     @Column(columnName = "ID")
     private String id;
@@ -27,11 +25,11 @@ public class EmployeeEntity {
     @Column(columnName = "DEPARTMENT")
     private String department;
     @Column(columnName = "BIRTHDAY")
-    private Date birthday;
+    private LocalDate birthday;
     @Column(columnName = "STARTED_WORK_AT")
-    private Date startedWorkAt;
+    private LocalDate startedWorkAt;
     @Column(columnName = "LEAVE_WORK_AT")
-    private Date leaveWorkAt;
+    private LocalDate leaveWorkAt;
     @Column(columnName = "ROLE")
     private Role role;
     @Column(columnName = "CREATED_AT")
@@ -107,27 +105,27 @@ public class EmployeeEntity {
         this.department = department;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
-    public Date getStartedWorkAt() {
+    public LocalDate getStartedWorkAt() {
         return startedWorkAt;
     }
 
-    public void setStartedWorkAt(Date startedWorkAt) {
+    public void setStartedWorkAt(LocalDate startedWorkAt) {
         this.startedWorkAt = startedWorkAt;
     }
 
-    public Date getLeaveWorkAt() {
+    public LocalDate getLeaveWorkAt() {
         return leaveWorkAt;
     }
 
-    public void setLeaveWorkAt(Date leaveWorkAt) {
+    public void setLeaveWorkAt(LocalDate leaveWorkAt) {
         this.leaveWorkAt = leaveWorkAt;
     }
 
@@ -211,17 +209,17 @@ public class EmployeeEntity {
             return this;
         }
 
-        public EmployeeEntityBuilder birthday(Date birthday) {
+        public EmployeeEntityBuilder birthday(LocalDate birthday) {
             this.employeeEntity.birthday = birthday;
             return this;
         }
 
-        public EmployeeEntityBuilder startedWorkAt(Date startedWorkAt) {
+        public EmployeeEntityBuilder startedWorkAt(LocalDate startedWorkAt) {
             this.employeeEntity.startedWorkAt = startedWorkAt;
             return this;
         }
 
-        public EmployeeEntityBuilder leaveWorkAt(Date leaveWorkAt) {
+        public EmployeeEntityBuilder leaveWorkAt(LocalDate leaveWorkAt) {
             this.employeeEntity.leaveWorkAt = leaveWorkAt;
             return this;
         }

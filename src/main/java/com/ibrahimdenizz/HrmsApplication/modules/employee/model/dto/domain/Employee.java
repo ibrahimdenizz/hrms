@@ -4,8 +4,8 @@ import com.ibrahimdenizz.HrmsApplication.modules.employee.model.entity.EmployeeE
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Gender;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Role;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Random;
 
 public class Employee {
@@ -18,33 +18,14 @@ public class Employee {
     private String email;
     private Gender gender;
     private String department;
-    private Date birthday;
-    private Date startedWorkAt;
-    private Date leaveWorkAt;
+    private LocalDate birthday;
+    private LocalDate startedWorkAt;
+    private LocalDate leaveWorkAt;
     private Role role;
     protected LocalDateTime createdAt;
     protected LocalDateTime updatedAt;
 
     public Employee() {
-    }
-
-    public static Employee fromEntity(EmployeeEntity entity) {
-        return Employee.builder()
-                .id(entity.getId())
-                .username(entity.getUsername())
-                .password(entity.getPassword())
-                .firstName(entity.getFirstName())
-                .lastName(entity.getLastName())
-                .email(entity.getEmail())
-                .gender(entity.getGender())
-                .department(entity.getDepartment())
-                .birthday(entity.getBirthday())
-                .startedWorkAt(entity.getStartedWorkAt())
-                .leaveWorkAt(entity.getLeaveWorkAt())
-                .role(entity.getRole())
-                .createdAt(entity.getCreatedAt())
-                .updatedAt(entity.getUpdatedAt())
-                .build();
     }
 
     public EmployeeEntity toEntity() {
@@ -130,27 +111,27 @@ public class Employee {
         this.department = department;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
-    public Date getStartedWorkAt() {
+    public LocalDate getStartedWorkAt() {
         return startedWorkAt;
     }
 
-    public void setStartedWorkAt(Date startedWorkAt) {
+    public void setStartedWorkAt(LocalDate startedWorkAt) {
         this.startedWorkAt = startedWorkAt;
     }
 
-    public Date getLeaveWorkAt() {
+    public LocalDate getLeaveWorkAt() {
         return leaveWorkAt;
     }
 
-    public void setLeaveWorkAt(Date leaveWorkAt) {
+    public void setLeaveWorkAt(LocalDate leaveWorkAt) {
         this.leaveWorkAt = leaveWorkAt;
     }
 
@@ -248,17 +229,17 @@ public class Employee {
             return this;
         }
 
-        public EmployeeBuilder birthday(Date birthday) {
+        public EmployeeBuilder birthday(LocalDate birthday) {
             this.employee.birthday = birthday;
             return this;
         }
 
-        public EmployeeBuilder startedWorkAt(Date startedWorkAt) {
+        public EmployeeBuilder startedWorkAt(LocalDate startedWorkAt) {
             this.employee.startedWorkAt = startedWorkAt;
             return this;
         }
 
-        public EmployeeBuilder leaveWorkAt(Date leaveWorkAt) {
+        public EmployeeBuilder leaveWorkAt(LocalDate leaveWorkAt) {
             this.employee.leaveWorkAt = leaveWorkAt;
             return this;
         }

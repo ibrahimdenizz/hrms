@@ -23,7 +23,7 @@ public class AuthController {
     }
 
     @PostMapping("/auth/employee/{id}/password")
-    public void updatePassword(@PathVariable("id") String id, @RequestBody UpdatePasswordRequest updatePasswordRequest) {
+    public void updatePassword(@PathVariable String id, @RequestBody UpdatePasswordRequest updatePasswordRequest) {
         authService.updatePassword(id, updatePasswordRequest.password());
     }
 
