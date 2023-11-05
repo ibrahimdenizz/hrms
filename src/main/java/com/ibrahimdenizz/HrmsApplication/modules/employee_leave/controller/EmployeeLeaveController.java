@@ -5,6 +5,8 @@ import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.domain
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.request.CreateLeaveRequest;
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.response.GetAllEmployeeLeavesResponse;
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.service.EmployeeLeaveService;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +25,9 @@ public class EmployeeLeaveController {
 
 
     @PostMapping("/employee/{id}/leave")
-    public void createEmployeeLeave(@PathVariable String id, @RequestBody CreateLeaveRequest request) {
+    public ResponseEntity<Void> createEmployeeLeave(@PathVariable String id, @RequestBody @Valid CreateLeaveRequest request) {
         employeeLeaveService.createEmployeeLeave(id, request);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/employee/{id}/leave")

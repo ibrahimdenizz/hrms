@@ -9,16 +9,15 @@ import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.service.Employee
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Service
-public class EmployeeLeaveLeaveServiceImpl implements EmployeeLeaveService {
+public class EmployeeLeaveServiceImpl implements EmployeeLeaveService {
 
     private final EmployeeLeaveRepository employeeLeaveRepository;
 
-    public EmployeeLeaveLeaveServiceImpl(EmployeeLeaveRepository employeeLeaveRepository) {
+    public EmployeeLeaveServiceImpl(EmployeeLeaveRepository employeeLeaveRepository) {
         this.employeeLeaveRepository = employeeLeaveRepository;
     }
 
@@ -37,7 +36,6 @@ public class EmployeeLeaveLeaveServiceImpl implements EmployeeLeaveService {
                 .reason(request.reason())
                 .status(Status.PENDING)
                 .createdAt(LocalDateTime.now())
-                .updatedAt(null)
                 .build();
 
         employeeLeaveRepository.save(employeeLeave.toEntity());
@@ -49,14 +47,10 @@ public class EmployeeLeaveLeaveServiceImpl implements EmployeeLeaveService {
     @Override
     public List<EmployeeLeave> getAllEmployeeLeaves(String employeeId) {
         List<EmployeeLeaveEntity> employeeLeaveEntities = employeeLeaveRepository.getAllEmployeeLeaves(employeeId);
-        ArrayList<EmployeeLeave> employeeLeaves = new ArrayList<>();
 
-        for (EmployeeLeaveEntity employeeLeaveEntity : employeeLeaveEntities) {
-            employeeLeaves.add(EmployeeLeave.fromEntity(employeeLeaveEntity));
-        }
-
-        System.out.println(employeeLeaveEntities.get(0).getStartDate());
-
-        return employeeLeaves;
+        return employeeLeaveEntities
+                .stream()
+                .map(EmployeeLeave::fromEntity)
+                .toList();
     }
 }

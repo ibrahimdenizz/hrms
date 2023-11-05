@@ -1,6 +1,7 @@
 package com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.response;
 
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.domain.EmployeeLeave;
+import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.enums.Status;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,7 +11,9 @@ public class GetAllEmployeeLeavesResponse {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    private String leaveTypeName;
+    private String reason;
+    private Status status;
+    private String leaveType;
     private LocalDateTime createdAt;
 
     public GetAllEmployeeLeavesResponse() {
@@ -32,12 +35,28 @@ public class GetAllEmployeeLeavesResponse {
         this.endDate = endDate;
     }
 
-    public String getLeaveTypeName() {
-        return leaveTypeName;
+    public String getLeaveType() {
+        return leaveType;
     }
 
-    public void setLeaveTypeName(String leaveTypeName) {
-        this.leaveTypeName = leaveTypeName;
+    public void setLeaveType(String leaveType) {
+        this.leaveType = leaveType;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -52,7 +71,9 @@ public class GetAllEmployeeLeavesResponse {
         return GetAllEmployeeLeavesResponse.builder()
                 .startDate(employeeLeave.getStartDate())
                 .endDate(employeeLeave.getEndDate())
-                .leaveTypeName(employeeLeave.getLeaveType().getName())
+                .reason(employeeLeave.getReason())
+                .status(employeeLeave.getStatus())
+                .leaveType(employeeLeave.getLeaveType().getName())
                 .createdAt(employeeLeave.getCreatedAt())
                 .build();
     }
@@ -83,8 +104,18 @@ public class GetAllEmployeeLeavesResponse {
             return this;
         }
 
-        public GetAllEmployeeLeavesResponseBuilder leaveTypeName(String leaveTypeName) {
-            this.getAllEmployeeLeavesResponse.leaveTypeName = leaveTypeName;
+        public GetAllEmployeeLeavesResponseBuilder reason(String reason) {
+            this.getAllEmployeeLeavesResponse.reason = reason;
+            return this;
+        }
+
+        public GetAllEmployeeLeavesResponseBuilder status(Status status) {
+            this.getAllEmployeeLeavesResponse.status = status;
+            return this;
+        }
+
+        public GetAllEmployeeLeavesResponseBuilder leaveType(String leaveType) {
+            this.getAllEmployeeLeavesResponse.leaveType = leaveType;
             return this;
         }
 

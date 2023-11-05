@@ -21,8 +21,8 @@ public class EmployeeLeaveRepositoryImpl implements EmployeeLeaveRepository {
 
     @Override
     public void save(EmployeeLeaveEntity employeeLeaveEntity) {
-        String sql = "INSERT INTO hrms.LEAVE (ID, EMPLOYEE_ID, LEAVE_TYPE_ID, START_DATE, END_DATE, REASON, STATUS, CREATED_AT, UPDATED_AT) " +
-                     "VALUES (:id, :employeeId, :leaveTypeId, :startDate, :endDate, :reason, :status, :createdAt, :updatedAt)";
+        String sql = "INSERT INTO `LEAVE` (ID, EMPLOYEE_ID, LEAVE_TYPE_ID, START_DATE, END_DATE, REASON, STATUS, CREATED_AT) " +
+                     "VALUES (:id, :employeeId, :leaveTypeId, :startDate, :endDate, :reason, :status, :createdAt)";
 
         try (Connection connection = sql2o.open(); Query query = connection.createQuery(sql)) {
             query.addParameter("id", employeeLeaveEntity.getId())
@@ -33,7 +33,6 @@ public class EmployeeLeaveRepositoryImpl implements EmployeeLeaveRepository {
                     .addParameter("reason", employeeLeaveEntity.getReason())
                     .addParameter("status", employeeLeaveEntity.getStatus())
                     .addParameter("createdAt", employeeLeaveEntity.getCreatedAt())
-                    .addParameter("updatedAt", employeeLeaveEntity.getUpdatedAt())
                     .executeUpdate();
         }
     }
