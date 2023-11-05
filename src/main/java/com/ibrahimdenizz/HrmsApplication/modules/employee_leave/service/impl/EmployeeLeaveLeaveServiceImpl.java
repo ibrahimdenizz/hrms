@@ -2,12 +2,15 @@ package com.ibrahimdenizz.HrmsApplication.modules.employee_leave.service.impl;
 
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.domain.EmployeeLeave;
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.request.CreateLeaveRequest;
+import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.entity.EmployeeLeaveEntity;
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.enums.Status;
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.repository.EmployeeLeaveRepository;
 import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.service.EmployeeLeaveService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -44,7 +47,16 @@ public class EmployeeLeaveLeaveServiceImpl implements EmployeeLeaveService {
      *
      */
     @Override
-    public void findAllByEmployeeId() {
+    public List<EmployeeLeave> getAllEmployeeLeaves(String employeeId) {
+        List<EmployeeLeaveEntity> employeeLeaveEntities = employeeLeaveRepository.getAllEmployeeLeaves(employeeId);
+        ArrayList<EmployeeLeave> employeeLeaves = new ArrayList<>();
 
+        for (EmployeeLeaveEntity employeeLeaveEntity : employeeLeaveEntities) {
+            employeeLeaves.add(EmployeeLeave.fromEntity(employeeLeaveEntity));
+        }
+
+        System.out.println(employeeLeaveEntities.get(0).getStartDate());
+
+        return employeeLeaves;
     }
 }

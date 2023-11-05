@@ -7,6 +7,8 @@ import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 @Repository
 public class EmployeeLeaveRepositoryImpl implements EmployeeLeaveRepository {
 
@@ -33,6 +35,27 @@ public class EmployeeLeaveRepositoryImpl implements EmployeeLeaveRepository {
                     .addParameter("createdAt", employeeLeaveEntity.getCreatedAt())
                     .addParameter("updatedAt", employeeLeaveEntity.getUpdatedAt())
                     .executeUpdate();
+        }
+    }
+
+    @Override
+    public List<EmployeeLeaveEntity> getAllEmployeeLeaves(String employeeId) {
+        String sql = "SELECT " +
+                     "`leave`.ID AS ID, `leave`.EMPLOYEE_ID AS EMPLOYEE_ID, `leave`.START_DATE AS START_DATE, " +
+                     "`leave`.END_DATE AS END_DATE, `leave`.REASON AS REASON, `leave`.STATUS AS STATUS, " +
+                     "`leave`.CREATED_AT AS CREATED_AT, `leave`.UPDATED_AT AS UPDATED_AT, " +
+                     "leave_type.ID AS LEAVE_TYPE_ID, leave_type.NAME AS LEAVE_TYPE_NAME " +
+                     "FROM `LEAVE` AS `leave` " +
+                     "INNER JOIN LEAVE_TYPE AS leave_type ON `leave`.LEAVE_TYPE_ID = leave_type.ID " +
+                     "WHERE `leave`.EMPLOYEE_ID = :employeeId";
+
+        try (Connection connection = sql2o.open(); Query query = connection.createQuery(sql)) {
+            return query.addParameter("employeeId", employeeId)
+                    .executeAndFetchTable()
+                    .rows()
+                    .stream()
+                    .map(EmployeeLeaveEntity::fromTableRow)
+                    .toList();
         }
     }
 }
