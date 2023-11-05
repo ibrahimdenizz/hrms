@@ -10,7 +10,7 @@ import org.sql2o.Sql2o;
 import java.util.List;
 
 @Repository
-public class LeaveRepositoryImpl implements LeaveRepository {
+class LeaveRepositoryImpl implements LeaveRepository {
 
     private final Sql2o sql2o;
 

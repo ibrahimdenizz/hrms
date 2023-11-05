@@ -1,4 +1,4 @@
-package com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.response;
+package com.ibrahimdenizz.HrmsApplication.modules.employee.model.response;
 
 public class CreateEmployeeResponse {
     private String username;

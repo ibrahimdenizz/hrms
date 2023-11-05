@@ -11,7 +11,7 @@ import org.sql2o.Sql2o;
 import java.util.List;
 
 @Repository
-public class EmployeeRepositoryImpl implements EmployeeRepository {
+class EmployeeRepositoryImpl implements EmployeeRepository {
 
     private final Sql2o sql2o;
 

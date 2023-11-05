@@ -1,9 +1,9 @@
 package com.ibrahimdenizz.HrmsApplication.modules.employee.controller;
 
 import com.ibrahimdenizz.HrmsApplication.annotations.RestControllerV1;
-import com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.domain.Employee;
-import com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.request.CreateEmployeeRequest;
-import com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.response.CreateEmployeeResponse;
+import com.ibrahimdenizz.HrmsApplication.modules.employee.model.domain.Employee;
+import com.ibrahimdenizz.HrmsApplication.modules.employee.model.request.CreateEmployeeRequest;
+import com.ibrahimdenizz.HrmsApplication.modules.employee.model.response.CreateEmployeeResponse;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.service.EmployeeService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

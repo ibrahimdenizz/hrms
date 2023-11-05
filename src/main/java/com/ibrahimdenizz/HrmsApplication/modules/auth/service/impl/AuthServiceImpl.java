@@ -8,7 +8,7 @@ import com.ibrahimdenizz.HrmsApplication.modules.employee.repository.EmployeeRep
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthServiceImpl implements AuthService {
+class AuthServiceImpl implements AuthService {
 
     private final EmployeeRepository employeeRepository;
 

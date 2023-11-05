@@ -1,6 +1,6 @@
-package com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.response;
+package com.ibrahimdenizz.HrmsApplication.modules.leave.model.response;
 
-import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.domain.Leave;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.domain.Leave;
 import com.ibrahimdenizz.HrmsApplication.modules.leave.model.enums.LeaveStatus;
 
 import java.time.LocalDate;

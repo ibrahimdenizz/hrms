@@ -1,9 +1,9 @@
 package com.ibrahimdenizz.HrmsApplication.modules.leave.controller;
 
 import com.ibrahimdenizz.HrmsApplication.annotations.RestControllerV1;
-import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.domain.Leave;
-import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.request.CreateLeaveRequest;
-import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.response.EmployeeLeavesResponse;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.domain.Leave;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.request.CreateLeaveRequest;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.response.EmployeeLeavesResponse;
 import com.ibrahimdenizz.HrmsApplication.modules.leave.service.EmployeeLeaveService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

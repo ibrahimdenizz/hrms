@@ -1,4 +1,4 @@
-package com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.request;
+package com.ibrahimdenizz.HrmsApplication.modules.leave.model.request;
 
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotNull;

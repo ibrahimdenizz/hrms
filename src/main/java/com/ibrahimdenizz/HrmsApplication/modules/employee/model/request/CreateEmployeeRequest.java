@@ -1,4 +1,4 @@
-package com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.request;
+package com.ibrahimdenizz.HrmsApplication.modules.employee.model.request;
 
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Gender;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Role;

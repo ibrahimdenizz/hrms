@@ -1,4 +1,4 @@
-package com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.domain;
+package com.ibrahimdenizz.HrmsApplication.modules.employee.model.domain;
 
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.entity.EmployeeEntity;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Gender;

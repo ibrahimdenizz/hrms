@@ -1,4 +1,4 @@
-package com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.domain;
+package com.ibrahimdenizz.HrmsApplication.modules.leave.model.domain;
 
 import com.ibrahimdenizz.HrmsApplication.modules.leave.model.entity.LeaveEntity;
 import com.ibrahimdenizz.HrmsApplication.modules.leave.model.enums.LeaveStatus;

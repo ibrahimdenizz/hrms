@@ -1,8 +1,8 @@
 package com.ibrahimdenizz.HrmsApplication.modules.employee.service.impl;
 
 import com.ibrahimdenizz.HrmsApplication.modules.employee.exception.EmployeeUsernameAlreadyExists;
-import com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.domain.Employee;
-import com.ibrahimdenizz.HrmsApplication.modules.employee.model.dto.request.CreateEmployeeRequest;
+import com.ibrahimdenizz.HrmsApplication.modules.employee.model.domain.Employee;
+import com.ibrahimdenizz.HrmsApplication.modules.employee.model.request.CreateEmployeeRequest;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.repository.EmployeeRepository;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.service.EmployeeService;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.UUID;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 

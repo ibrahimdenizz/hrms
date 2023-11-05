@@ -1,9 +1,9 @@
 package com.ibrahimdenizz.HrmsApplication.modules.leave.service.impl;
 
-import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.domain.Leave;
-import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.request.CreateLeaveRequest;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.domain.Leave;
 import com.ibrahimdenizz.HrmsApplication.modules.leave.model.entity.LeaveEntity;
 import com.ibrahimdenizz.HrmsApplication.modules.leave.model.enums.LeaveStatus;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.request.CreateLeaveRequest;
 import com.ibrahimdenizz.HrmsApplication.modules.leave.repository.LeaveRepository;
 import com.ibrahimdenizz.HrmsApplication.modules.leave.service.EmployeeLeaveService;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class EmployeeLeaveServiceImpl implements EmployeeLeaveService {
+class EmployeeLeaveServiceImpl implements EmployeeLeaveService {
 
     private final LeaveRepository leaveRepository;
 

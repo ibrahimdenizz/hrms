@@ -1,8 +1,8 @@
 package com.ibrahimdenizz.HrmsApplication.modules.auth.controller;
 
 import com.ibrahimdenizz.HrmsApplication.annotations.RestControllerV1;
-import com.ibrahimdenizz.HrmsApplication.modules.auth.model.dto.request.LoginRequest;
-import com.ibrahimdenizz.HrmsApplication.modules.auth.model.dto.request.UpdatePasswordRequest;
+import com.ibrahimdenizz.HrmsApplication.modules.auth.model.request.LoginRequest;
+import com.ibrahimdenizz.HrmsApplication.modules.auth.model.request.UpdatePasswordRequest;
 import com.ibrahimdenizz.HrmsApplication.modules.auth.service.AuthService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
