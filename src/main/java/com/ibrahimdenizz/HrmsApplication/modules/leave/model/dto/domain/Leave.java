@@ -1,12 +1,12 @@
-package com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.domain;
+package com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.domain;
 
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.entity.EmployeeLeaveEntity;
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.enums.Status;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.entity.LeaveEntity;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.enums.LeaveStatus;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class EmployeeLeave {
+public class Leave {
 
     private String id;
     private String employeeId;
@@ -14,17 +14,17 @@ public class EmployeeLeave {
     private LocalDate startDate;
     private LocalDate endDate;
     private String reason;
-    private Status status;
+    private LeaveStatus leaveStatus;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    private EmployeeLeaveType leaveType;
+    private LeaveType leaveType;
 
-    public EmployeeLeave() {
+    public Leave() {
     }
 
-    public static EmployeeLeave fromEntity(EmployeeLeaveEntity entity) {
-        return EmployeeLeave.builder()
+    public static Leave fromEntity(LeaveEntity entity) {
+        return Leave.builder()
                 .id(entity.getId())
                 .employeeId(entity.getEmployeeId())
                 .leaveTypeId(entity.getLeaveTypeId())
@@ -34,12 +34,12 @@ public class EmployeeLeave {
                 .status(entity.getStatus())
                 .createdAt(entity.getCreatedAt())
                 .updatedAt(entity.getUpdatedAt())
-                .leaveType(EmployeeLeaveType.fromEntity(entity.getLeaveType()))
+                .leaveType(LeaveType.fromEntity(entity.getLeaveType()))
                 .build();
     }
 
-    public EmployeeLeaveEntity toEntity() {
-        return EmployeeLeaveEntity.builder()
+    public LeaveEntity toEntity() {
+        return LeaveEntity.builder()
                 .id(this.getId())
                 .employeeID(this.getEmployeeId())
                 .leaveTypeId(this.getLeaveTypeId())
@@ -101,12 +101,12 @@ public class EmployeeLeave {
         this.reason = reason;
     }
 
-    public Status getStatus() {
-        return status;
+    public LeaveStatus getStatus() {
+        return leaveStatus;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus(LeaveStatus leaveStatus) {
+        this.leaveStatus = leaveStatus;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -125,77 +125,77 @@ public class EmployeeLeave {
         this.updatedAt = updatedAt;
     }
 
-    public EmployeeLeaveType getLeaveType() {
+    public LeaveType getLeaveType() {
         return leaveType;
     }
 
-    public void setLeaveType(EmployeeLeaveType leaveType) {
+    public void setLeaveType(LeaveType leaveType) {
         this.leaveType = leaveType;
     }
 
-    public static EmployeeLeaveBuilder builder() {
-        return new EmployeeLeaveBuilder();
+    public static LeaveBuilder builder() {
+        return new LeaveBuilder();
     }
 
-    public static class EmployeeLeaveBuilder {
+    public static class LeaveBuilder {
 
-        private final EmployeeLeave employeeLeave;
+        private final Leave leave;
 
-        public EmployeeLeaveBuilder() {
-            this.employeeLeave = new EmployeeLeave();
+        public LeaveBuilder() {
+            this.leave = new Leave();
         }
 
-        public EmployeeLeave build() {
-            return this.employeeLeave;
+        public Leave build() {
+            return this.leave;
         }
 
-        public EmployeeLeaveBuilder id(String id) {
-            this.employeeLeave.id = id;
+        public LeaveBuilder id(String id) {
+            this.leave.id = id;
             return this;
         }
 
-        public EmployeeLeaveBuilder employeeId(String employeeId) {
-            this.employeeLeave.employeeId = employeeId;
+        public LeaveBuilder employeeId(String employeeId) {
+            this.leave.employeeId = employeeId;
             return this;
         }
 
-        public EmployeeLeaveBuilder leaveTypeId(String leaveTypeId) {
-            this.employeeLeave.leaveTypeId = leaveTypeId;
+        public LeaveBuilder leaveTypeId(String leaveTypeId) {
+            this.leave.leaveTypeId = leaveTypeId;
             return this;
         }
 
-        public EmployeeLeaveBuilder startDate(LocalDate startDate) {
-            this.employeeLeave.startDate = startDate;
+        public LeaveBuilder startDate(LocalDate startDate) {
+            this.leave.startDate = startDate;
             return this;
         }
 
-        public EmployeeLeaveBuilder endDate(LocalDate endDate) {
-            this.employeeLeave.endDate = endDate;
+        public LeaveBuilder endDate(LocalDate endDate) {
+            this.leave.endDate = endDate;
             return this;
         }
 
-        public EmployeeLeaveBuilder reason(String reason) {
-            this.employeeLeave.reason = reason;
+        public LeaveBuilder reason(String reason) {
+            this.leave.reason = reason;
             return this;
         }
 
-        public EmployeeLeaveBuilder status(Status status) {
-            this.employeeLeave.status = status;
+        public LeaveBuilder status(LeaveStatus leaveStatus) {
+            this.leave.leaveStatus = leaveStatus;
             return this;
         }
 
-        public EmployeeLeaveBuilder createdAt(LocalDateTime createdAt) {
-            this.employeeLeave.createdAt = createdAt;
+        public LeaveBuilder createdAt(LocalDateTime createdAt) {
+            this.leave.createdAt = createdAt;
             return this;
         }
 
-        public EmployeeLeaveBuilder updatedAt(LocalDateTime updatedAt) {
-            this.employeeLeave.updatedAt = updatedAt;
+        public LeaveBuilder updatedAt(LocalDateTime updatedAt) {
+            this.leave.updatedAt = updatedAt;
             return this;
         }
 
-        public EmployeeLeaveBuilder leaveType(EmployeeLeaveType leaveType) {
-            this.employeeLeave.leaveType = leaveType;
+        public LeaveBuilder leaveType(LeaveType leaveType) {
+            this.leave.leaveType = leaveType;
             return this;
         }
 

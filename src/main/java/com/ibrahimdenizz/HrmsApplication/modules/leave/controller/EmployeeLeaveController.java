@@ -1,10 +1,10 @@
-package com.ibrahimdenizz.HrmsApplication.modules.employee_leave.controller;
+package com.ibrahimdenizz.HrmsApplication.modules.leave.controller;
 
 import com.ibrahimdenizz.HrmsApplication.annotations.RestControllerV1;
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.domain.EmployeeLeave;
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.request.CreateLeaveRequest;
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.dto.response.GetAllEmployeeLeavesResponse;
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.service.EmployeeLeaveService;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.domain.Leave;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.request.CreateLeaveRequest;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.dto.response.EmployeeLeavesResponse;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.service.EmployeeLeaveService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +31,10 @@ public class EmployeeLeaveController {
     }
 
     @GetMapping("/employee/{id}/leave")
-    public List<GetAllEmployeeLeavesResponse> getAllEmployeeLeaves(@PathVariable String id) {
-        List<EmployeeLeave> employeeLeaveList = employeeLeaveService.getAllEmployeeLeaves(id);
-        return employeeLeaveList.stream()
-                .map(GetAllEmployeeLeavesResponse::fromDomain)
+    public List<EmployeeLeavesResponse> getAllEmployeeLeaves(@PathVariable String id) {
+        List<Leave> leaves = employeeLeaveService.getAllEmployeeLeaves(id);
+        return leaves.stream()
+                .map(EmployeeLeavesResponse::fromDomain)
                 .toList();
     }
 

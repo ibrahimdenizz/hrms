@@ -1,7 +1,7 @@
-package com.ibrahimdenizz.HrmsApplication.modules.employee_leave.repository.impl;
+package com.ibrahimdenizz.HrmsApplication.modules.leave.repository.impl;
 
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.entity.EmployeeLeaveEntity;
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.repository.EmployeeLeaveRepository;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.entity.LeaveEntity;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.repository.LeaveRepository;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Query;
@@ -10,35 +10,35 @@ import org.sql2o.Sql2o;
 import java.util.List;
 
 @Repository
-public class EmployeeLeaveRepositoryImpl implements EmployeeLeaveRepository {
+public class LeaveRepositoryImpl implements LeaveRepository {
 
     private final Sql2o sql2o;
 
-    public EmployeeLeaveRepositoryImpl(Sql2o sql2o) {
+    public LeaveRepositoryImpl(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
 
 
     @Override
-    public void save(EmployeeLeaveEntity employeeLeaveEntity) {
+    public void save(LeaveEntity leaveEntity) {
         String sql = "INSERT INTO `LEAVE` (ID, EMPLOYEE_ID, LEAVE_TYPE_ID, START_DATE, END_DATE, REASON, STATUS, CREATED_AT) " +
                      "VALUES (:id, :employeeId, :leaveTypeId, :startDate, :endDate, :reason, :status, :createdAt)";
 
         try (Connection connection = sql2o.open(); Query query = connection.createQuery(sql)) {
-            query.addParameter("id", employeeLeaveEntity.getId())
-                    .addParameter("employeeId", employeeLeaveEntity.getEmployeeId())
-                    .addParameter("leaveTypeId", employeeLeaveEntity.getLeaveTypeId())
-                    .addParameter("startDate", employeeLeaveEntity.getStartDate())
-                    .addParameter("endDate", employeeLeaveEntity.getEndDate())
-                    .addParameter("reason", employeeLeaveEntity.getReason())
-                    .addParameter("status", employeeLeaveEntity.getStatus())
-                    .addParameter("createdAt", employeeLeaveEntity.getCreatedAt())
+            query.addParameter("id", leaveEntity.getId())
+                    .addParameter("employeeId", leaveEntity.getEmployeeId())
+                    .addParameter("leaveTypeId", leaveEntity.getLeaveTypeId())
+                    .addParameter("startDate", leaveEntity.getStartDate())
+                    .addParameter("endDate", leaveEntity.getEndDate())
+                    .addParameter("reason", leaveEntity.getReason())
+                    .addParameter("status", leaveEntity.getStatus())
+                    .addParameter("createdAt", leaveEntity.getCreatedAt())
                     .executeUpdate();
         }
     }
 
     @Override
-    public List<EmployeeLeaveEntity> getAllEmployeeLeaves(String employeeId) {
+    public List<LeaveEntity> findAllByEmployeeId(String employeeId) {
         String sql = "SELECT " +
                      "`leave`.ID AS ID, `leave`.EMPLOYEE_ID AS EMPLOYEE_ID, `leave`.START_DATE AS START_DATE, " +
                      "`leave`.END_DATE AS END_DATE, `leave`.REASON AS REASON, `leave`.STATUS AS STATUS, " +
@@ -53,7 +53,7 @@ public class EmployeeLeaveRepositoryImpl implements EmployeeLeaveRepository {
                     .executeAndFetchTable()
                     .rows()
                     .stream()
-                    .map(EmployeeLeaveEntity::fromTableRow)
+                    .map(LeaveEntity::fromTableRow)
                     .toList();
         }
     }

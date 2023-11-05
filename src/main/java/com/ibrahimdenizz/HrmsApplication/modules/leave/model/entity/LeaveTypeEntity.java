@@ -1,9 +1,9 @@
-package com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.entity;
+package com.ibrahimdenizz.HrmsApplication.modules.leave.model.entity;
 
 import com.ibrahimdenizz.HrmsApplication.annotations.Column;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.enums.Gender;
 
-public class EmployeeLeaveTypeEntity {
+public class LeaveTypeEntity {
 
     @Column(columnName = "ID")
     private String id;
@@ -14,7 +14,7 @@ public class EmployeeLeaveTypeEntity {
     @Column(columnName = "GENDER")
     private Gender gender;
 
-    public EmployeeLeaveTypeEntity() {
+    public LeaveTypeEntity() {
     }
 
     public String getId() {
@@ -55,33 +55,33 @@ public class EmployeeLeaveTypeEntity {
 
     public static class EmployeeLeaveTypeEntityBuilder {
 
-        private final EmployeeLeaveTypeEntity employeeLeaveTypeEntity;
+        private final LeaveTypeEntity leaveTypeEntity;
 
         public EmployeeLeaveTypeEntityBuilder() {
-            this.employeeLeaveTypeEntity = new EmployeeLeaveTypeEntity();
+            this.leaveTypeEntity = new LeaveTypeEntity();
         }
 
-        public EmployeeLeaveTypeEntity build() {
-            return this.employeeLeaveTypeEntity;
+        public LeaveTypeEntity build() {
+            return this.leaveTypeEntity;
         }
 
         public EmployeeLeaveTypeEntityBuilder id(String id) {
-            this.employeeLeaveTypeEntity.id = id;
+            this.leaveTypeEntity.id = id;
             return this;
         }
 
         public EmployeeLeaveTypeEntityBuilder name(String name) {
-            this.employeeLeaveTypeEntity.name = name;
+            this.leaveTypeEntity.name = name;
             return this;
         }
 
         public EmployeeLeaveTypeEntityBuilder maxDays(Integer maxDays) {
-            this.employeeLeaveTypeEntity.maxDays = maxDays;
+            this.leaveTypeEntity.maxDays = maxDays;
             return this;
         }
 
         public EmployeeLeaveTypeEntityBuilder gender(Gender gender) {
-            this.employeeLeaveTypeEntity.gender = gender;
+            this.leaveTypeEntity.gender = gender;
             return this;
         }
 

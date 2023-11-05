@@ -1,15 +1,15 @@
-package com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.entity;
+package com.ibrahimdenizz.HrmsApplication.modules.leave.model.entity;
 
 import com.ibrahimdenizz.HrmsApplication.annotations.Column;
 import com.ibrahimdenizz.HrmsApplication.modules.employee.model.entity.EmployeeEntity;
-import com.ibrahimdenizz.HrmsApplication.modules.employee_leave.model.enums.Status;
+import com.ibrahimdenizz.HrmsApplication.modules.leave.model.enums.LeaveStatus;
 import org.sql2o.data.Row;
 
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class EmployeeLeaveEntity {
+public class LeaveEntity {
     @Column(columnName = "ID")
     private String id;
     @Column(columnName = "EMPLOYEE_ID")
@@ -23,16 +23,16 @@ public class EmployeeLeaveEntity {
     @Column(columnName = "REASON")
     private String reason;
     @Column(columnName = "STATUS")
-    private Status status;
+    private LeaveStatus leaveStatus;
     @Column(columnName = "CREATED_AT")
     private LocalDateTime createdAt;
     @Column(columnName = "UPDATED_AT")
     private LocalDateTime updatedAt;
 
-    private EmployeeLeaveTypeEntity leaveType;
+    private LeaveTypeEntity leaveType;
     private EmployeeEntity employee;
 
-    public EmployeeLeaveEntity() {
+    public LeaveEntity() {
     }
 
     public String getId() {
@@ -83,12 +83,12 @@ public class EmployeeLeaveEntity {
         this.reason = reason;
     }
 
-    public Status getStatus() {
-        return status;
+    public LeaveStatus getStatus() {
+        return leaveStatus;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus(LeaveStatus leaveStatus) {
+        this.leaveStatus = leaveStatus;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -107,11 +107,11 @@ public class EmployeeLeaveEntity {
         this.updatedAt = updatedAt;
     }
 
-    public EmployeeLeaveTypeEntity getLeaveType() {
+    public LeaveTypeEntity getLeaveType() {
         return leaveType;
     }
 
-    public void setLeaveType(EmployeeLeaveTypeEntity leaveType) {
+    public void setLeaveType(LeaveTypeEntity leaveType) {
         this.leaveType = leaveType;
     }
 
@@ -123,27 +123,27 @@ public class EmployeeLeaveEntity {
         this.employee = employee;
     }
 
-    static public EmployeeLeaveEntity fromTableRow(Row row) {
+    static public LeaveEntity fromTableRow(Row row) {
         LocalDate startDate = new Date(row.getDate("start_date").getTime()).toLocalDate();
         LocalDate endDate = new Date(row.getDate("end_date").getTime()).toLocalDate();
         LocalDateTime createdAt = (LocalDateTime) row.getObject("created_at");
         LocalDateTime updatedAt = (LocalDateTime) row.getObject("updated_at");
 
-        EmployeeLeaveEntity employeeLeaveEntity = new EmployeeLeaveEntity();
-        employeeLeaveEntity.setId(row.getString("id"));
-        employeeLeaveEntity.setEmployeeId(row.getString("employee_id"));
-        employeeLeaveEntity.setLeaveTypeId(row.getString("leave_type_id"));
-        employeeLeaveEntity.setStartDate(startDate);
-        employeeLeaveEntity.setEndDate(endDate);
-        employeeLeaveEntity.setReason(row.getString("reason"));
-        employeeLeaveEntity.setStatus(Status.valueOf(row.getString("status")));
-        employeeLeaveEntity.setCreatedAt(createdAt);
-        employeeLeaveEntity.setUpdatedAt(updatedAt);
-        EmployeeLeaveTypeEntity leaveTypeEntity = new EmployeeLeaveTypeEntity();
+        LeaveEntity leaveEntity = new LeaveEntity();
+        leaveEntity.setId(row.getString("id"));
+        leaveEntity.setEmployeeId(row.getString("employee_id"));
+        leaveEntity.setLeaveTypeId(row.getString("leave_type_id"));
+        leaveEntity.setStartDate(startDate);
+        leaveEntity.setEndDate(endDate);
+        leaveEntity.setReason(row.getString("reason"));
+        leaveEntity.setStatus(LeaveStatus.valueOf(row.getString("status")));
+        leaveEntity.setCreatedAt(createdAt);
+        leaveEntity.setUpdatedAt(updatedAt);
+        LeaveTypeEntity leaveTypeEntity = new LeaveTypeEntity();
         leaveTypeEntity.setId(row.getString("leave_type_id"));
         leaveTypeEntity.setName(row.getString("leave_type_name"));
-        employeeLeaveEntity.setLeaveType(leaveTypeEntity);
-        return employeeLeaveEntity;
+        leaveEntity.setLeaveType(leaveTypeEntity);
+        return leaveEntity;
     }
 
     public static EmployeeLeaveEntityBuilder builder() {
@@ -153,13 +153,13 @@ public class EmployeeLeaveEntity {
 
     public static class EmployeeLeaveEntityBuilder {
 
-        private final EmployeeLeaveEntity employeeEntity;
+        private final LeaveEntity employeeEntity;
 
         public EmployeeLeaveEntityBuilder() {
-            this.employeeEntity = new EmployeeLeaveEntity();
+            this.employeeEntity = new LeaveEntity();
         }
 
-        public EmployeeLeaveEntity build() {
+        public LeaveEntity build() {
             return this.employeeEntity;
         }
 
@@ -193,8 +193,8 @@ public class EmployeeLeaveEntity {
             return this;
         }
 
-        public EmployeeLeaveEntityBuilder status(Status status) {
-            this.employeeEntity.status = status;
+        public EmployeeLeaveEntityBuilder status(LeaveStatus leaveStatus) {
+            this.employeeEntity.leaveStatus = leaveStatus;
             return this;
         }
 
@@ -208,7 +208,7 @@ public class EmployeeLeaveEntity {
             return this;
         }
 
-        public EmployeeLeaveEntityBuilder leaveType(EmployeeLeaveTypeEntity leaveType) {
+        public EmployeeLeaveEntityBuilder leaveType(LeaveTypeEntity leaveType) {
             this.employeeEntity.leaveType = leaveType;
             return this;
         }
